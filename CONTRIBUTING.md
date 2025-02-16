@@ -63,8 +63,8 @@ I'm currently [mention your hiring status: "actively seeking," "open to opportun
 
 ## Contact
 
-You can reach me, DefaultPi, through [mention contact methods: "GitHub," "email," "Discord," etc.].
+You can reach me, DefaultPi, through mention contact methods: GitHub, defaul.pi@gmail.com and Discord: defaultpi.
 
 ## License
 
-By contributing to Pi Client, you agree that your contributions will be licensed under the [mention the license used for the project, e.g., MIT License].
+By contributing to Pi Client, you agree that your contributions will be licensed under the MIT License.
