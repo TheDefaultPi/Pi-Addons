@@ -23,7 +23,7 @@ Still in development
 
 ### Prerequisites
 
-*   Will need Java 17 or higher
+*   Java 17 or higher for fabric and later on other mod loaders
 *   And starting with minecraft versions 1.21+
 
 ### Steps
