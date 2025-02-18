@@ -9,7 +9,7 @@ Thank you for your interest in contributing to Pi Client! We appreciate your hel
 2.  **Clone Your Fork:** Clone your forked repository to your local machine:
 
     ```bash
-    git clone https://github.com/TheSkyPirate/PiClient.git
+    git clone https://github.com/TheDefaultPi/PiClient.git
     ```
 
 3.  **Create a Branch:** Create a new branch for your contribution.  This helps keep your changes organized and separate from the main development branch.
