@@ -9,7 +9,7 @@ Thank you for your interest in contributing to Pi Client! We appreciate your hel
 2.  **Clone Your Fork:** Clone your forked repository to your local machine:
 
     ```bash
-    git clone [https://github.com/](https://github.com/)[your-username]/pi-client.git
+    git clone https://github.com/TheSkyPirate/PiClient.git
     ```
 
 3.  **Create a Branch:** Create a new branch for your contribution.  This helps keep your changes organized and separate from the main development branch.
@@ -59,12 +59,12 @@ I, DefaultPi, am the creator of Pi Client.  I'm passionate about creating a high
 
 ## Hiring (Programming & Design)
 
-I'm currently [mention your hiring status: "actively seeking," "open to opportunities," "not hiring at this time," etc.] talented programmers and designers to contribute to Pi Client.  If you have experience in [mention specific areas: "Java development," "Minecraft modding," "UI/UX design," etc.] and are interested in working on this project, please feel free to contact me through [mention contact methods: "GitHub," "email," "Discord," etc.].  Include examples of your previous work or a portfolio if you have one.  Even if I'm not actively hiring, I'm always interested in connecting with talented individuals in the Minecraft development community.
+I'm currently seeking talented programmers and designers to contribute to Pi Client.  If you have experience in Java development, Minecraft modding, UI/UX design, etc. and are interested in working on this project, please feel free to contact me through GitHub, email, or Discord.
 
 ## Contact
 
-You can reach me, DefaultPi, through mention contact methods: GitHub, defaul.pi@gmail.com and Discord: defaultpi.
+You can reach me, DefaultPi, through mention contact methods: GitHub, Default.Pi@gmail.com and Discord: defaultpi.
 
 ## License
 
-By contributing to Pi Client, you agree that your contributions will be licensed under the MIT License.
+By contributing to Pi Client, you agree that your contributions will be licensed under the [MIT License.](LICENSE)
