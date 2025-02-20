@@ -40,7 +40,7 @@ We will try to use [Fabric](https://fabricmc.net) to run our mod.
 
 ### Prerequisites
 
-*   JDK 21
+*   JDK 21 for 1.21 (JDK 17 NOT SUPPORTED)
 
 ## Contributing
 
@@ -53,5 +53,6 @@ Contributions are welcome! Please open an issue or submit a pull request. See th
 ## Contact
 
 *   defaultpi on discord
+*   bearflare on discord
 *   Default.Pi@gmail.com
 *   Discord server to come
