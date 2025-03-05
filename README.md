@@ -1,4 +1,4 @@
-# PiFps
+# Pi Client (WIP)
 A Minecraft Beta Client for customization
 
 A highly customizable Minecraft client designed for maximum customization. Pi Client empowers you to tailor your Minecraft experience to your exact preferences.
