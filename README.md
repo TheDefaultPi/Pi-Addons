@@ -9,6 +9,7 @@ A highly customizable Minecraft client designed for maximum customization. Pi Cl
 *   custom capss
 *   basic fps counter
 *   temu flight (will flag anti-cheat)
+*   legit totem (will NOT flag anti-cheat WWW)
 ## Installation
 
 Still in development (You can use .java flies for the scipts)
