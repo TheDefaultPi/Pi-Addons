@@ -1,53 +1,42 @@
-import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
-import net.fabricmc.fabric.api.event.player.UseBlockCallback;
-import net.fabricmc.fabric.api.event.player.UseItemCallback;
+import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
+import net.minecraft.client.option.KeyBinding;
+import net.minecraft.client.util.InputUtil;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
-import net.minecraft.util.TypedActionResult;
-import net.minecraft.world.World;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.entity.LivingEntity;
-import net.fabricmc.fabric.api.event.entity.living.LivingEntityEvents;
+import org.lwjgl.glfw.GLFW;
 import java.util.HashMap;
 import java.util.UUID;
 
-public class TotemSwapFabric implements ModInitializer {
+public class TotemSwapToggle implements ClientModInitializer {
 
+    private boolean enabled = false;
+    private KeyBinding toggleKey;
     private HashMap<UUID, Long> lastSwapTime = new HashMap<>();
 
     @Override
-    public void onInitialize() {
-        LivingEntityEvents.ALLOW_DEATH.register((entity, damageSource, damageAmount) -> {
-            if (entity instanceof PlayerEntity) {
-                PlayerEntity player = (PlayerEntity) entity;
-                if (player.getInventory().contains(new ItemStack(Items.TOTEM_OF_UNDYING))) {
-                    handleTotemSwap(player);
+    public void onInitializeClient() {
+        toggleKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+                "key.totemswap.toggle", 
+                InputUtil.Type.KEYSYM, 
+                GLFW.GLFW_KEY_Y, 
+                "category.totemswap" 
+        ));
+
+        ClientTickEvents.END_CLIENT_TICK.register(client -> {
+            if (toggleKey.wasPressed()) {
+                enabled = !enabled;
+                if (client.player != null) {
+                    client.player.sendMessage(net.minecraft.text.Text.of("Totem Swap: " + (enabled ? "Enabled" : "Disabled")), true);
                 }
             }
-            return true;
-        });
 
-        UseItemCallback.EVENT.register((player, world, hand) -> {
-            ItemStack itemStack = player.getStackInHand(hand);
-            if (itemStack.getItem() == Items.TOTEM_OF_UNDYING) {
-                return TypedActionResult.pass(itemStack); // Prevent swap if already holding totem
-            }
-            if (player.isSneaking()) {
-                handleTotemSwap(player);
-            }
-            return TypedActionResult.pass(itemStack);
-        });
-
-        ServerTickEvents.END_SERVER_TICK.register(server -> {
-            for(PlayerEntity player : server.getPlayerManager().getPlayerList()) {
-                if(player == null) {
-                    lastSwapTime.remove(player.getUuid());
+            if (enabled && client.player != null) {
+                if (client.player.isSneaking()) {
+                    handleTotemSwap(client.player);
                 }
             }
         });
@@ -79,7 +68,7 @@ public class TotemSwapFabric implements ModInitializer {
             ItemStack totem = player.getInventory().getStack(totemSlot);
             ItemStack heldItem = player.getMainHandStack();
             player.getInventory().setStack(totemSlot, heldItem);
-            player.getMainHandStack().decrement(player.getMainHandStack().getCount()); //Clear the hand
+            player.getMainHandStack().decrement(player.getMainHandStack().getCount()); 
             player.getInventory().offerOrDrop(totem); //Put totem in hand.
         }
     }
