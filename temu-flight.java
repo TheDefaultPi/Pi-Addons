@@ -1,62 +1,60 @@
-import org.bukkit.entity.Player;
-import org.bukkit.util.Vector;
-import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.event.Listener;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.player.PlayerMoveEvent;
-import org.bukkit.event.player.PlayerToggleSneakEvent;
-import org.bukkit.event.player.PlayerToggleFlightEvent; // Using flight event as jump proxy
-import org.bukkit.event.player.PlayerToggleSprintEvent; // Using sprint event as jump proxy
-import org.bukkit.event.player.PlayerToggleSneakEvent;
+import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
+import net.fabricmc.fabric.api.event.player.PlayerMoveCallback;
+import net.fabricmc.fabric.api.event.player.PlayerToggleSneakCallback;
+import net.fabricmc.fabric.api.event.player.PlayerToggleFlightCallback;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.Vec3f;
+import net.minecraft.util.math.Direction;
+import net.minecraft.util.ActionResult;
+import net.minecraft.server.network.ServerPlayerEntity;
 
-public class PlayerMovementModifier extends JavaPlugin implements Listener {
+public class PlayerMovementFabric implements ModInitializer {
 
     @Override
-    public void onEnable() {
-        getServer().getPluginManager().registerEvents(this, this);
-    }
+    public void onInitialize() {
+        PlayerMoveCallback.EVENT.register((player, posFrom, posTo) -> {
+            Vec3d velocity = player.getVelocity();
 
-    @EventHandler
-    public void onPlayerMove(PlayerMoveEvent event) {
-        Player player = event.getPlayer();
-        Vector velocity = player.getVelocity();
+            // Forward/Backward (using sprinting as forward proxy)
+            if (player.isSprinting()) {
+                Vec3d direction = player.getRotationVector();
+                velocity = velocity.add(direction.multiply(0.2));
+            } else if (player.isSneaking()) {
+                Vec3d direction = player.getRotationVector();
+                velocity = velocity.add(direction.multiply(-0.2));
+            }
 
-        //Forward/Backward
-        if (player.isSprinting()) { //Using sprinting as a forward proxy.
-          velocity.add(player.getLocation().getDirection().multiply(0.2));
-        } else if (player.isSneaking()) {
-          velocity.add(player.getLocation().getDirection().multiply(-0.2));
-        }
+            // Strafe Left/Right (using flying as left proxy, and sneak + sprint as right)
+            if (player.getAbilities().flying) {
+                Vec3d left = player.getRotationVector().crossProduct(new Vec3d(0, 1, 0)).normalize().multiply(-0.2);
+                velocity = velocity.add(left);
+            } else if (player.isSneaking() && player.isSprinting()) {
+                Vec3d right = player.getRotationVector().crossProduct(new Vec3d(0, 1, 0)).normalize().multiply(0.2);
+                velocity = velocity.add(right);
+            }
 
-        //Strafe Left/Right
-        if (player.isFlying()) { // Using flying as a left proxy.
-            Vector left = player.getLocation().getDirection().clone().crossProduct(new Vector(0,1,0)).normalize().multiply(-0.2);
-            velocity.add(left);
-        } else if (player.isSneaking() && player.isSprinting()) { //using sneak and sprint as a right proxy.
-            Vector right = player.getLocation().getDirection().clone().crossProduct(new Vector(0,1,0)).normalize().multiply(0.2);
-            velocity.add(right);
-        }
-
-        player.setVelocity(velocity);
-    }
-
-    @EventHandler
-    public void onPlayerToggleFlight(PlayerToggleFlightEvent event) {
-        if (event.isFlying()) {
-            Player player = event.getPlayer();
-            Vector velocity = player.getVelocity();
-            velocity.setY(0.5);
             player.setVelocity(velocity);
-        }
-    }
+            return ActionResult.PASS;
+        });
 
-    @EventHandler
-    public void onPlayerToggleSneak(PlayerToggleSneakEvent event) {
-        if (event.isSneaking()) {
-            Player player = event.getPlayer();
-            Vector velocity = player.getVelocity();
-            velocity.setY(-0.5);
-            player.setVelocity(velocity);
-        }
+        PlayerToggleFlightCallback.EVENT.register((player, enabled) -> {
+            if (enabled) {
+                Vec3d velocity = player.getVelocity();
+                velocity = new Vec3d(velocity.getX(), 0.5, velocity.getZ());
+                player.setVelocity(velocity);
+            }
+            return ActionResult.PASS;
+        });
+
+        PlayerToggleSneakCallback.EVENT.register((player, enabled) -> {
+            if (enabled) {
+                Vec3d velocity = player.getVelocity();
+                velocity = new Vec3d(velocity.getX(), -0.5, velocity.getZ());
+                player.setVelocity(velocity);
+            }
+            return ActionResult.PASS;
+        });
     }
 }
