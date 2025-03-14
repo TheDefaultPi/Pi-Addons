@@ -1,15 +1,15 @@
 # Contributing to Pi Client
 
-Thank you for your interest in contributing to Pi Client! We appreciate your help in making this project even better.  Whether you're a seasoned developer or just starting out, your contributions are welcome.
+Thank you for your interest in contributing to Pi Addons! We appreciate your help in making this project even better.  Whether you're a seasoned developer or just starting out, your contributions are welcome.
 
 ## How to Contribute
 
-1.  **Fork the Repository:** Start by forking the Pi Client repository on GitHub. This creates a copy of the project under your own GitHub account.
+1.  **Fork the Repository:** Start by forking the Pi Addons repository on GitHub. This creates a copy of the project under your own GitHub account.
 
 2.  **Clone Your Fork:** Clone your forked repository to your local machine:
 
     ```bash
-    git clone https://github.com/TheDefaultPi/PiClient.git
+    git clone https://github.com/TheDefaultPi/Pi-Addons.git
     ```
 
 3.  **Create a Branch:** Create a new branch for your contribution.  This helps keep your changes organized and separate from the main development branch.
@@ -32,13 +32,13 @@ Thank you for your interest in contributing to Pi Client! We appreciate your hel
     git push origin feature/your-feature-name
     ```
 
-7.  **Create a Pull Request:** Go to the original Pi Client repository on GitHub.  You should see a button that says "Compare & pull request." Click it.
+7.  **Create a Pull Request:** Go to the original Pi Addons repository on GitHub.  You should see a button that says "Compare & pull request." Click it.
 
 8.  **Review and Merge:** The project maintainers will review your pull request.  They might request changes or ask questions.  Once the review is complete, your changes will be merged into the main branch.
 
 ## Coding Style
 
-Please follow the existing coding style used in the project.  Consistency is important for readability and maintainability. [Mention specific style guides or linters if used. E.g., "We use the Google Java Style Guide.  Please ensure your code is formatted accordingly."]
+Please follow the existing coding style used in the project.  Consistency is important for readability and maintainability.
 
 ## Reporting Bugs
 
@@ -55,16 +55,16 @@ If you have an idea for a new feature, please open an issue on GitHub to discuss
 
 ## DefaultPi (Project Creator)
 
-I, DefaultPi, am the creator of Pi Client.  I'm passionate about creating a highly customizable and enjoyable Minecraft experience.
+I, DefaultPi, am the creator of Pi Addons.  I'm passionate about creating a highly customizable and enjoyable Minecraft experience.
 
 ## Hiring (Programming & Design)
 
-I'm currently seeking talented programmers and designers to contribute to Pi Client.  If you have experience in Java development, Minecraft modding, UI/UX design, etc. and are interested in working on this project, please feel free to contact me through GitHub, email, or Discord.
+I'm currently seeking talented programmers and designers to contribute to Pi Addons.  If you have experience in Java development, Minecraft modding, UI/UX design, etc. and are interested in working on this project, please feel free to contact me through GitHub, email, or Discord.
 
 ## Contact
 
-You can reach me, DefaultPi, through mention contact methods: GitHub, Default.Pi@gmail.com and Discord: defaultpi.
+You can reach me, DefaultPi, through mention contact methods: GitHub, [Default.Pi@gmail.com](mailto:Default.Pi@gmail.com) and Discord: defaultpi.
 
 ## License
 
-By contributing to Pi Client, you agree that your contributions will be licensed under the [MIT License.](LICENSE)
+By contributing to Pi Addons, you agree that your contributions will be licensed under the [MIT License.](LICENSE)
