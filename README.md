@@ -1,11 +1,9 @@
 # Pi Addons (WIP)
 Minecraft Addons for your favorite mod loader!
 
-~~A highly customizable Minecraft client designed for maximum customization. Pi Client empowers you to tailor your Minecraft experience to your exact preferences.~~
-
 ## Key Features
 
-*   **Extensive Addons:**  ~~Pi Client offers a wide range of customization options, allowing you to personalize nearly every aspect of your gameplay.~~
+*   **Extensive Addons:**
 *   Custom Capes
 *   Basic FPS Counter
 *   Temu Flight **(will flag anti-cheat)**
