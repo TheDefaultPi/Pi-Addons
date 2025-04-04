@@ -1,4 +1,4 @@
-# Contributing to Pi Client
+# Contributing to Pi Addons
 
 Thank you for your interest in contributing to Pi Addons! We appreciate your help in making this project even better.  Whether you're a seasoned developer or just starting out, your contributions are welcome.
 
