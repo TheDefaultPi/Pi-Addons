@@ -1,7 +1,7 @@
 {
   "name": "Spammer",
   "version": "1.0.0",
-  "main": "main.js",
+  "main": "spammer.js",
   "description": "Spams in chat every second.",
   "author": "DefaultPi"
 }
