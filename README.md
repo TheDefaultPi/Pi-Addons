@@ -4,10 +4,9 @@ Minecraft Addons for your favorite mod loader!
 ## Key Features
 
 *   **Extensive Addons:**
-*   Custom Capes
 *   Basic FPS Counter
 *   Temu Flight **(will flag anti-cheat)**
-*   Legit Totem **(will NOT flag anti-cheat WWW)**
+*   Legit Auto Totem **(will NOT flag anti-cheat WWW)**
 *   Chat Spammer
 ## Installation
 
@@ -27,6 +26,7 @@ your-addon-folder/
 ### Prerequisites
 
 *   Mod loader like fabric
+*   clickcrystals good for injecting ccs files
 
 ## Contributing
 
