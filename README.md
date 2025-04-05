@@ -11,7 +11,7 @@ Minecraft Addons for your favorite mod loader!
 ## Installation
 
 Still in development (You can use .java flies for the scipts)
-*   For the chat spammer:
+For the chat spammer:
 *   your-addon-folder/
 *   ├── manifest.json
 *   └── spammer.js
