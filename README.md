@@ -8,9 +8,14 @@ Minecraft Addons for your favorite mod loader!
 *   Basic FPS Counter
 *   Temu Flight **(will flag anti-cheat)**
 *   Legit Totem **(will NOT flag anti-cheat WWW)**
+*   Chat Spammer
 ## Installation
 
 Still in development (You can use .java flies for the scipts)
+For the chat spammer:
+your-addon-folder/
+├── manifest.json
+└── spammer.js
 
 ### Steps/Usage
 
